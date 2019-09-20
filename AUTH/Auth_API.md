@@ -166,7 +166,7 @@ class ApplicationController < ActionController::API
   end
 
   def current_user
-    User.find(decoded_token[0]["user_id"]) if decoded_token
+    User.find(decoded_token[0]["user_id"]) if token
   end
 
   def create_token(user_id)
