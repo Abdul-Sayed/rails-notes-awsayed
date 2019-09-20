@@ -1,0 +1,99 @@
+Questions
+
+
+What is the MVC Paradigm? What are the responsibilities of the Models, Views, and Controllers?
+	MVC is an architecture pattern that seperates the application into 
+	a) models which handle communication with the database and business logic
+	b) views, which serve as the UI to present data to the user
+	c) controllers transfer data between the models and the views
+
+	This seperation of responsibilities allows for easier debugging, future modification, and is suitable for a team to simultaneously work on the seperate roles. 
+
+
+
+What are the 7 RESTful routes (HTTP Verb + URL)? What is the purpose of each action?
+
+	Prefix: instances_path Verb: GET URL: '/instances' action: index  ==> Get a list of model instances
+	----------------------------------------------------------------
+	Prefix: instances_path Verb: POST URL: '/instances' action: create  ==> Post a model instance to the database
+	------------------------------------------------------------------
+	Prefix: new_instance_path Verb: GET URL: '/instances/new' action: new  ==> Get a form to create a new model instance
+	----------------------------------------------------------------------
+	Prefix: edit_bread_path Verb: GET URL: '/instances/:id/edit' action: edit  ==> Get a form to update a model instance
+	----------------------------------------------------------------------
+	Prefix: bread_path Verb: GET URL: '/instances/:id' action: show  ==> Get a description of the model instance
+	--------------------------------------------------------------------
+	Prefix: bread_path Verb: PATCH/PUT URL: '/instances/:id' action: update  ==> Update a model instance partially (PATCH) or fully (PUT)
+	--------------------------------------------------------------------
+	Prefix: bread_path Verb: DELETE URL: '/instances/:id' action: destroy  ==> Destroy a model instance from the database
+
+
+
+Which of the 7 RESTful actions require you to find an instance from the database? Which does not?
+	The REST actions where the URL involved specifying an id such as edit, show, update, destroy. The other REST actions (index, create, new) don't have an id requirement in the name and therefore don't require an instance from the database. 
+
+
+
+Which of the 7 RESTful actions alters the database and where do these actions get the necessary information from?
+	create (POST), update (PATCH/PUT), and destroy (DELETE) alter the database and operate on a model instance that is found from the model by id; @instance = Model.find(params[:id])
+
+
+
+An example of a route in Rails looks like the following: get ‘/hats’, to: ‘hats#index’. What are the four parts of that route and what is the responsibility of each part?
+	`get "url", to "controller#action", as: alt_URL`  ==> couple the HTTP Verb URL with the controller action, and optionally specify an alternative route path, based on the options available in rails routes. 
+
+
+
+What does the resources keyword in routes do for us?
+	It generates all 7 CRUD routes for the model (specified in plural); `resources :models` 
+
+
+	
+
+
+
+How are the values of the params hash assigned? How are the keys assigned? Between a user and a programmer, who has control over the keys? What about the values? 
+	A params hash values are assigned from some sort of user input (CLI or forms), the keys are specified programmatically in the controller files
+
+
+
+
+
+
+
+There are 4 generic path helpers that come from Rails. Which of the 4 requires an argument? Which does not?
+
+
+
+When do we use <% %> vs <%= %>?
+
+
+What are some differences between render and redirect_to?
+
+
+
+What are the arguments for a link_to? What are the arguments for a button_to? What are some differences between the two?
+
+
+
+A form_for is a form for something, i.e. a form_for takes something as an argument. What is that something?
+
+
+
+What does the action and method keywords in a <form/> do? How do we assign the action and the method for a form_for and a form_tag?
+
+
+
+When would be an appropriate time to use a collection_select? What are the four arguments that a collection_select take?
+
+
+
+How do we show the associated objects of an object on a its show page?
+
+
+
+When do validations occur? Where should we write them in our server?
+
+
+
+If the user fails to meet some validations, how do we give the user the feedback for why the database was not altered?
