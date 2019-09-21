@@ -9,10 +9,10 @@ In Gemfile, ensure these gems and bundle install/update
 	gem 'active_model_serializers'
 	gem 'fast_jsonapi'
 	gem 'rest-client'
-	gem 'json',
+	gem 'json'
 	gem 'faker'
 
-In config/initializers/cors.rb and config/application.rb uncomment and enable CORS;
+In config/initializers/cors.rb uncomment and enable CORS;
 
 	config.middleware.insert_before 0, Rack::Cors do
 		allow do
